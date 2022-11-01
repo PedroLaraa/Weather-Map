@@ -1,0 +1,13 @@
+.map-container {
+    width: 100vw;
+    height: 50vh;
+    background-color: whitesmoke;
+}
+
+.leaflet-container {
+    width: 50vw;
+    height: 50vh;
+    margin: auto;
+    border: 4px solid rgb(188, 188, 188);
+    border-radius: 4px;
+}
