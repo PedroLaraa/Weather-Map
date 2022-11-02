@@ -29,6 +29,8 @@ const Mapa = () => {
 
     const climaGeral = clima.map(v => v.main)[0]
 
+    console.log(climaGeral)
+
     function LocationMarker() {
         const map = useMapEvents({
             click(e) {
@@ -40,27 +42,26 @@ const Mapa = () => {
                     setTemperaturaRegiao(res.data.main)
                     setClima(res.data.weather)
                     setCidade(res.data.name)
-                    console.log(res.data)
-                    switch (climaGeral) {
-
-                        case "Clear":
-                            setBackground(backgroundLinks.clear)
-                            break
-                        case "Rain":
-                            setBackground(backgroundLinks.rain)
-                            break
-                        case "Clouds":
-                            setBackground(backgroundLinks.clouds)
-                            break
-                        default:
-                            setBackground(backgroundLinks.clear)
-                            break
-                    }
                 }).catch((err) => {
                     console.log(err)
                 })
             }
         })
+
+        switch (climaGeral) {
+            case "Clear":
+                setBackground(backgroundLinks.clear)
+                break
+            case "Rain":
+                setBackground(backgroundLinks.rain)
+                break
+            case "Clouds":
+                setBackground(backgroundLinks.clouds)
+                break
+            default:
+                setBackground("red")
+                break
+        }
 
         return position === null ? null : (
             <Marker position={position}>
@@ -83,12 +84,16 @@ const Mapa = () => {
                 </MapContainer>
             </div>
             <div className='col-6'>
-                <DescricaoClima 
-                background={background}
-                temp={temperaturaRegiao.temp}
-                tempMin={temperaturaRegiao.temp_min}
-                tempMax={temperaturaRegiao.temp_max}
-                />
+                {cidade && (
+                    <DescricaoClima 
+                    background={background}
+                    climaGeral={clima.map(v => v.description)[0]}
+                    temp={temperaturaRegiao.temp}
+                    tempMin={temperaturaRegiao.temp_min}
+                    tempMax={temperaturaRegiao.temp_max}
+                    cidade={cidade}
+                    />
+                )}
             </div>
         </div>
     )
