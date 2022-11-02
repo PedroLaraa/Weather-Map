@@ -1,36 +1,32 @@
 
+import { useState } from "react";
 import "./descricaoClimaStyle.css";
 
 const DescricaoClima = (props) => {
 
+    
+
     return (
-        <div className="row">
+        <div 
+        className="row h-100 container-data"
+        style={{backgroundImage: props.background}}
+        >
             <div className="col-4">
-                <ul>
-                    <li>
-                        Atual: { props.temp }
-                    </li>
-                    <li>
-                        Mínima: { props.tempMin }
-                    </li>
-                    <li>
-                        Máxima: { props.tempMax }
-                    </li>
-                </ul>
+                <section>
+                    <p>Atual: {props.temp}</p>
+                    <p>Mínima: {props.tempMin}</p>
+                    <p>Máxima: {props.tempMax}</p>
+                </section>
             </div>
             <div className="col-4">
-                <ul>
-                    <li>
-                        { }
-                    </li>
-                </ul>
+                <section>
+                    <p></p>
+                </section>
             </div>
             <div className="col-4">
-                <ul>
-                    <li>
-                        { }
-                    </li>
-                </ul>
+                <section>
+                    <p></p>
+                </section>
             </div>
         </div>
     )
