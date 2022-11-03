@@ -8,7 +8,7 @@ const DescricaoClima = (props) => {
 
     return (
         <div 
-        className="row h-100 justify-content-center"
+        className="row h-100 justify-content-center container-clima-geral"
         style={{backgroundImage: props.background}}
         >
             <div className="col-12 text-center m-auto pt-4 container-data">

@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
+.container-clima-geral{
+    border: 2px solid black;
+    border-radius: .5rem;
+}
+
 .container-data{
     color: rgb(255, 255, 255);
-    background-color: rgba(0, 0, 0, 0.372);
-    border: 1px solid rgba(0, 0, 0, 0.372);
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 2rem;
 }
 
@@ -13,6 +17,7 @@
     text-shadow: 3px 0px 0px rgb(0, 0, 0);
     font-family: 'JetBrains Mono', monospace;
 }
+
 .container-data section p{
     font-size: 2rem;
     text-shadow: 3px 0px 0px rgb(0, 0, 0);

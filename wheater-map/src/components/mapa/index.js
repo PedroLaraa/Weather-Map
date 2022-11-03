@@ -8,6 +8,7 @@ import { http } from '../../config';
 import DescricaoClima from './descricaoClima';
 
 import './mapaStyle.css'
+
 import Padrao from './padrao';
 
 const Mapa = () => {
@@ -69,7 +70,7 @@ const Mapa = () => {
                 setBackground(backgroundLinks.mist)
                 break
             default:
-                setBackground("red")
+                setBackground("whitesmoke")
                 break
         }
 
@@ -80,33 +81,33 @@ const Mapa = () => {
         )
     }
 
-    // Mist
-
     return (
-        <div className="map-container row">
-            <div className='col-6'>
-                <MapContainer center={[0, 0]} zoom={2} scrollWheelZoom={true}>
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        <div className='vh-100 d-flex align-items-center container-div'>
+            <div className="map-container row justify-content-center">
+                <div className='col-4 map-container-mapa m-2'>
+                    <MapContainer center={[0, 0]} zoom={2} scrollWheelZoom={true}>
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        <LocationMarker />
+                    </MapContainer>
+                </div>
+                <div className='col-4 m-2'>
+                    {cidade 
+                    ? 
+                    <DescricaoClima
+                        background={background}
+                        climaGeral={clima.map(v => v.description)[0]}
+                        temp={temperaturaRegiao.temp}
+                        tempMin={temperaturaRegiao.temp_min}
+                        tempMax={temperaturaRegiao.temp_max}
+                        cidade={cidade}
                     />
-                    <LocationMarker />
-                </MapContainer>
-            </div>
-            <div className='col-6'>
-                {cidade 
-                ? 
-                <DescricaoClima
-                    background={background}
-                    climaGeral={clima.map(v => v.description)[0]}
-                    temp={temperaturaRegiao.temp}
-                    tempMin={temperaturaRegiao.temp_min}
-                    tempMax={temperaturaRegiao.temp_max}
-                    cidade={cidade}
-                />
-                :  
-                <Padrao />
-                }
+                    :  
+                    <Padrao />
+                    }
+                </div>
             </div>
         </div>
     )

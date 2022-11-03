@@ -1,0 +1,33 @@
+.footerContainer{
+    height: 15vh;
+    background-size: cover;
+    border-radius: .5rem;
+    padding-top: 2rem;
+    background-color: rgb(66, 66, 66);
+}
+
+.infosFooter{
+    display: flex;
+    justify-content: space-around;
+}
+
+.infosFooter p{
+    color: #ffffff;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.toTopBtn{
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
+}
+
+.toTopBtn a{
+    color: #ffffff;
+}   
