@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";
 
 import { http } from '../../config';
+
 import DescricaoClima from './descricaoClima';
 
 import './mapaStyle.css'
@@ -82,9 +83,9 @@ const Mapa = () => {
     }
 
     return (
-        <div className='vh-100 d-flex align-items-center container-div'>
+        <div className=' d-flex align-items-center container-div'>
             <div className="map-container row justify-content-center">
-                <div className='col-4 map-container-mapa m-2'>
+                <div className='col-md-5 h-100 map-container-mapa m-2'>
                     <MapContainer center={[0, 0]} zoom={2} scrollWheelZoom={true}>
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -93,7 +94,7 @@ const Mapa = () => {
                         <LocationMarker />
                     </MapContainer>
                 </div>
-                <div className='col-4 m-2'>
+                <div className='col-md-5 m-2'>
                     {cidade 
                     ? 
                     <DescricaoClima
