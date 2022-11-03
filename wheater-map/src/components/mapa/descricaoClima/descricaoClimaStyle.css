@@ -3,6 +3,7 @@
 .container-clima-geral{
     border: 2px solid black;
     border-radius: .5rem;
+    background-size: cover;
 }
 
 .container-data{
