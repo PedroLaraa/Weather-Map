@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import "./descricaoClimaStyle.css";
 
 const DescricaoClima = (props) => {
@@ -10,10 +8,10 @@ const DescricaoClima = (props) => {
 
     return (
         <div 
-        className="row h-100 container-data justify-content-center"
+        className="row h-100 justify-content-center"
         style={{backgroundImage: props.background}}
         >
-            <div className="col-12 text-center m-auto">
+            <div className="col-12 text-center m-auto pt-4 container-data">
                 <h4>Cidade: {cidade}</h4>
                 <h4>Descrição: {descricaoClima}</h4>
                 <section className="section-temperatura">
