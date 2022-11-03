@@ -9,6 +9,5 @@
 }
 
 .developerSocialMediaComponent a :hover{
-    background-color: white;
-    border-radius: 50%;
+    width: 2.3rem;
 }
