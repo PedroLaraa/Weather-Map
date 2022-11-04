@@ -19,6 +19,9 @@ const Navbar = () => {
                         <li className="nav-item">
                             <a className="nav-link" href="https://github.com/PedroLaraa/Weather-Map">Projeto</a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="https://pedro-lara.vercel.app" style={{color: 'green'}}>O Desenvolvedor</a>
+                        </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" role="button" href='#Home' data-bs-toggle="dropdown" aria-expanded="false">
                                 Contatos
