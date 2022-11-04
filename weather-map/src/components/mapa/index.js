@@ -97,7 +97,7 @@ const Mapa = () => {
                 </div>
                 <div className='col-md-5 m-2'>
                     {cidade 
-                    ? 
+                    ?
                     <DescricaoClima
                         background={background}
                         climaGeral={clima.map(v => v.description)[0]}
@@ -106,7 +106,7 @@ const Mapa = () => {
                         tempMax={temperaturaRegiao.temp_max}
                         cidade={cidade}
                     />
-                    :  
+                    : 
                     <Padrao />
                     }
                 </div>
