@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from "react-leaflet";
 
 import { http } from '../../config';
+import BuscarCidade from './buscarCidade';
 
 import DescricaoClima from './descricaoClima';
 
@@ -23,6 +24,10 @@ const Mapa = () => {
     const [cidade, setCidade] = useState("")
 
     const [background, setBackground] = useState("");
+
+    const [buscaCidade, setBuscaCidade] = useState("");
+
+    const [buscaEstado, setBuscaEstado] = useState("");
 
     let latitude, longitude;
 
@@ -48,7 +53,31 @@ const Mapa = () => {
             })
     };
 
-    function LocationMarker() {
+    const requestSearchData = (e) => {
+        e.preventDefault();
+
+        http.get(`weather/city/?city=${buscaCidade.toLowerCase().replaceAll(' ', '%20') + ',' + buscaEstado.toLowerCase().replaceAll(' ', '%20')}`)
+        .then((res) => {
+            if(res.data.cod === '404'){
+                alert('Tente outra cidade!!!');
+            }else{
+                setPosition(res.data.coord)
+                setTemperaturaRegiao(res.data.main)
+                setClima(res.data.weather)
+                setCidade(res.data.name)
+                return position === null ? null : (
+                    <Marker position={position}>
+                        <Popup>{cidade}</Popup>
+                    </Marker>
+                )
+            }
+        }).catch((err) => {
+            alert('Tente outra cidade!');
+            console.log(err);
+        });
+    };
+
+    const LocationMarker = () => {
         const map = useMapEvents({
             click(e) {
                 setPosition(map.mouseEventToLatLng(e.originalEvent));
@@ -83,9 +112,18 @@ const Mapa = () => {
         )
     }
 
+    console.log(buscaCidade)
+
     return (
         <div className=' d-flex align-items-center container-div'>
             <div className="map-container row justify-content-center">
+                <div className=''>
+                    <BuscarCidade 
+                        funcaoSubmit={(e) => requestSearchData(e)}
+                        funcaoCidade={(e) => setBuscaCidade(e.target.value)} 
+                        funcaoEstado={(e) => setBuscaEstado(e.target.value)}
+                    />
+                </div>
                 <div className='col-md-5 h-100 map-container-mapa m-2'>
                     <MapContainer center={[0, 0]} zoom={2} scrollWheelZoom={true}>
                         <TileLayer
@@ -96,7 +134,7 @@ const Mapa = () => {
                     </MapContainer>
                 </div>
                 <div className='col-md-5 m-2'>
-                    {cidade 
+                    {cidade
                     ?
                     <DescricaoClima
                         background={background}

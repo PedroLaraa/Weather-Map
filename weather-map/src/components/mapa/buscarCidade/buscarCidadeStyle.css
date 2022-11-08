@@ -1,0 +1,14 @@
+.grupoDeForm{
+    background-color: rgba(245, 245, 245, 0.8);
+    border-radius: .4rem;
+}
+
+.grupoDeForm input{
+    width: 15rem;
+    margin: .5rem;
+}
+
+.grupoDeForm button{
+    width: 15rem;
+    margin: .5rem;
+}
