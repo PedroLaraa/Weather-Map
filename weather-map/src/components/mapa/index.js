@@ -15,13 +15,13 @@ import Padrao from './padrao';
 
 const Mapa = () => {
 
-    const [position, setPosition] = useState(null)
+    const [position, setPosition] = useState(null);
 
-    const [temperaturaRegiao, setTemperaturaRegiao] = useState([])
+    const [temperaturaRegiao, setTemperaturaRegiao] = useState([]);
 
-    const [clima, setClima] = useState([])
+    const [clima, setClima] = useState([]);
 
-    const [cidade, setCidade] = useState("")
+    const [cidade, setCidade] = useState("");
 
     const [background, setBackground] = useState("");
 
@@ -31,7 +31,7 @@ const Mapa = () => {
 
     let latitude, longitude;
 
-    const climaGeral = clima.map(v => v.main)[0]
+    const climaGeral = clima.map(v => v.main)[0];
 
     const backgroundLinks = {
         clear: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1057%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(202%2c 219%2c 29%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c393.445C79.887%2c409.361%2c165.883%2c408.075%2c238.358%2c370.892C314.011%2c332.078%2c376.299%2c265.063%2c405.725%2c185.288C434.27%2c107.902%2c416.318%2c23.024%2c396.177%2c-56.962C377.662%2c-130.489%2c337.764%2c-192.963%2c294.753%2c-255.405C246.556%2c-325.376%2c213.336%2c-425.986%2c130.134%2c-443.197C45.998%2c-460.601%2c-17.845%2c-365.317%2c-98.904%2c-336.837C-173.951%2c-310.469%2c-271.093%2c-340%2c-326.372%2c-282.803C-381.663%2c-225.594%2c-367.026%2c-132.942%2c-372.664%2c-53.581C-377.91%2c20.266%2c-393.942%2c98.762%2c-358.079%2c163.529C-322.968%2c226.939%2c-245.24%2c247.533%2c-184.248%2c286.695C-123.286%2c325.838%2c-71.051%2c379.289%2c0%2c393.445' fill='%23aab818'%3e%3c/path%3e%3cpath d='M1440 1135.199C1546.219 1143.702 1636.173 1061.91 1721.769 998.442 1802.55 938.544 1877.665 870.428 1920.062 779.237 1962.634 687.668 1976.98 584.79 1960.395 485.179 1944.029 386.88599999999997 1902.681 289.667 1827.632 224.115 1756.55 162.027 1654.169 165.60500000000002 1563.708 138.68900000000002 1472.844 111.65300000000002 1387.457 45.418000000000006 1294.826 65.584 1200.859 86.041 1127.495 163.433 1076.253 244.812 1028.967 319.908 1041.219 413.313 1021.4010000000001 499.815 999.315 596.215 919.538 689.331 953.0989999999999 782.36 986.5889999999999 875.193 1105.893 897.624 1185.805 955.534 1271.56 1017.677 1334.434 1126.748 1440 1135.199' fill='%23d6e53b'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1057'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e")`,
@@ -44,13 +44,13 @@ const Mapa = () => {
     const requestData = async function (req, res) {
         http.get(`weather?lat=${latitude}&lon=${longitude}`)
             .then((res) => {
-                setTemperaturaRegiao(res.data.main)
-                setClima(res.data.weather)
-                setCidade(res.data.name)
+                setTemperaturaRegiao(res.data.main);
+                setClima(res.data.weather);
+                setCidade(res.data.name);
             }).catch((err) => {
-                alert('Houve um erro no sistema, tente novamente mais tarde!')
-                console.log(err)
-            })
+                alert('Houve um erro no sistema, tente novamente mais tarde!');
+                console.log(err);
+            });
     };
 
     const requestSearchData = (e) => {
@@ -61,10 +61,10 @@ const Mapa = () => {
             if(res.data.cod === '404'){
                 alert('Tente outra cidade!!!');
             }else{
-                setPosition(res.data.coord)
-                setTemperaturaRegiao(res.data.main)
-                setClima(res.data.weather)
-                setCidade(res.data.name)
+                setPosition(res.data.coord);
+                setTemperaturaRegiao(res.data.main);
+                setClima(res.data.weather);
+                setCidade(res.data.name);
                 return position === null ? null : (
                     <Marker position={position}>
                         <Popup>{cidade}</Popup>
@@ -111,8 +111,6 @@ const Mapa = () => {
             </Marker>
         )
     }
-
-    console.log(buscaCidade)
 
     return (
         <div className=' d-flex align-items-center container-div'>
